@@ -4,6 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Meta Pixel Test</title>
+    <!-- Meta Pixel Base Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '382904300607657');
+      fbq('track', 'PageView');
+    </script>
+    <noscript>
+      <img height="1" width="1" style="display:none"
+           src="https://www.facebook.com/tr?id=382904300607657&ev=PageView&noscript=1"/>
+    </noscript>
 </head>
 <body>
     <header>
@@ -11,37 +28,53 @@
     </header>
     <main>
         <p>This is a test page for implementing Meta pixels. Please replace the placeholder URL in the image source attribute with the actual pixel URL for testing.</p>
-        <!-- Placeholder for the Meta pixel URL 489450856414565 -->
-        <img
-            src="https://www.facebook.com/tr?id=758671010435777&ev=AddToCart&cd[currency]=USD&cd[value]=0.00&cd[Product]=CC&cd[Subproduct]=AC&cd[PageID]=OSMA_APPL_CONSUMER_CREDITCARD_PAGE&cd[CustomerType]=&cd[CustomerStatus]=n&cd[ApplicationStatus]=&cd[content_ids]=CCD_CC_AC_Page_CC_Facebook_PageLoad&cd[eid]=2507241313-0a868478bb07&dpo=LDU&dpoco=0&dpost=0&_rnd=0.6440072297871793"
-            height="1"
-            width="1"
-            style="display:none"
-            alt="Meta Pixel Test"
-        />
-        <img
-            src="https://www.facebook.com/tr?id=758671010435777&ev=Burchase&eid=87654321&cd[eid]=1234567&cd[event_id]=12345679&cd[eventid]=1234567910"
-            height="1"
-            width="1"
-            style="display:none"
-            alt="Meta Pixel Test"
-        />
-        <img
-            src="https://www.facebook.com/tr?id=758671010435777&ev=InitiateCheckout&eid=2507241313-0a868478bb07&cd[currency]=USD&cd[value]=0.00&cd[Product]=CC&cd[Subproduct]=AC&cd[PageID]=OSMA_APPL_CONSUMER_CREDITCARD_PAGE&cd[CustomerType]=&cd[CustomerStatus]=n&cd[ApplicationStatus]=&cd[content_ids]=CCD_CC_AC_Page_CC_Facebook_PageLoad&cd[eid]=2507241313-0a868478bb07&dpo=LDU&dpoco=0&dpost=0&_rnd=0.6440072297871793"
-            height="1"
-            width="1"
-            style="display:none"
-            alt="Meta Pixel Test"
-        />
-        <img 
-            src="https://www.facebook.com/tr?id=758671010435777&ev=Purchase
+        <!-- COMMENTED OUT: Image pixel fires
+        <img src="https://www.facebook.com/tr?id=758671010435777&ev=AddToCart&cd[currency]=USD&cd[value]=0.00&cd[Product]=CC&cd[Subproduct]=AC&cd[PageID]=OSMA_APPL_CONSUMER_CREDITCARD_PAGE&cd[CustomerType]=&cd[CustomerStatus]=n&cd[ApplicationStatus]=&cd[content_ids]=CCD_CC_AC_Page_CC_Facebook_PageLoad&cd[eid]=2507241313-0a868478bb07&dpo=LDU&dpoco=0&dpost=0&_rnd=0.6440072297871793"
+            height="1" width="1" style="display:none" alt="Meta Pixel Test" />
+        <img src="https://www.facebook.com/tr?id=758671010435777&ev=Burchase&eid=87654321&cd[eid]=1234567&cd[event_id]=12345679&cd[eventid]=1234567910"
+            height="1" width="1" style="display:none" alt="Meta Pixel Test" />
+        <img src="https://www.facebook.com/tr?id=758671010435777&ev=InitiateCheckout&eid=2507241313-0a868478bb07&cd[currency]=USD&cd[value]=0.00&cd[Product]=CC&cd[Subproduct]=AC&cd[PageID]=OSMA_APPL_CONSUMER_CREDITCARD_PAGE&cd[CustomerType]=&cd[CustomerStatus]=n&cd[ApplicationStatus]=&cd[content_ids]=CCD_CC_AC_Page_CC_Facebook_PageLoad&cd[eid]=2507241313-0a868478bb07&dpo=LDU&dpoco=0&dpost=0&_rnd=0.6440072297871793"
+            height="1" width="1" style="display:none" alt="Meta Pixel Test" />
+        <img src="https://www.facebook.com/tr?id=758671010435777&ev=Purchase
             &eid=lololol12345
-            &cd[content_ids]=["ThankYouInitiatePageLoadAAO"]
-          "
-        height="1"
-         width="1" 
-        style="display:none"
-        />
+            &cd[content_ids]=['ThankYouInitiatePageLoadAAO']"
+            height="1" width="1" style="display:none" />
+        -->
+        <!-- JS Pixel Fires using fbq -->
+        <script>
+          // AddToCart event
+          fbq('track', 'AddToCart', {
+            currency: 'USD',
+            value: 0.00,
+            content_ids: ['testcid00001'],
+            content_type: 'product',
+            eid: '2507241313-0a868478bb07'
+          });
+          // Purchase event
+          fbq('track', 'Purchase', {
+            currency: 'USD',
+            value: 0.00,
+            content_ids: ['testcid00002'],
+            content_type: 'product',
+            eid: '87654321',
+            event_id: '12345679',
+            eventid: '1234567910'
+          });
+          // InitiateCheckout event
+          fbq('track', 'InitiateCheckout', {
+            currency: 'USD',
+            value: 0.00,
+            content_ids: ['testcid00003'],
+            content_type: 'product',
+            eid: '2507241313-0a868478bb07'
+          });
+          // Purchase event (Thank You Page)
+          fbq('track', 'Purchase', {
+            content_ids: ['ThankYouInitiatePageLoadAAO'],
+            content_type: 'product',
+            eid: 'lololol12345'
+          });
+        </script>
     </main>
 </body>
 </html>
