@@ -32,72 +32,10 @@
     <main>
         <p>This is a test page for implementing Meta pixels and Google Tag Manager. Use the buttons below to fire different events.</p>
 
-        <button onclick="fireAddToCart()">Simulate Add to Cart Event</button>
-        <button onclick="firePurchase()">Simulate Purchase Event</button>
-        <button onclick="fireInitiateCheckout()">Simulate Initiate Checkout Event</button>
-        <button onclick="fireThankYouPurchase()">Simulate Thank You Page Purchase Event</button>
-
-        <script>
-          // AddToCart event
-          function fireAddToCart() {
-            fbq('track', 'AddToCart', {
-              currency: 'USD',
-              value: 0.00,
-              content_ids: ['CCD_CC_AC_Page_CC_Facebook_PageLoad'],
-              content_type: 'product',
-              Product: 'CC',
-              Subproduct: 'AC',
-              PageID: 'OSMA_APPL_CONSUMER_CREDITCARD_PAGE',
-              CustomerType: '',
-              CustomerStatus: 'n',
-              ApplicationStatus: '',
-              eid: '2507241313-0a868478bb07'
-            });
-            console.log("AddToCart event fired!");
-          }
-
-          // Purchase event
-          function firePurchase() {
-            fbq('track', 'Purchase', {
-              currency: 'USD',
-              value: 0.00,
-              content_ids: ['CCD_CC_AC_Page_CC_Facebook_PageLoad'],
-              content_type: 'product',
-              eid: '87654321',
-              event_id: '12345679',
-              eventid: '1234567910'
-            });
-            console.log("Purchase event fired!");
-          }
-
-          // InitiateCheckout event
-          function fireInitiateCheckout() {
-            fbq('track', 'InitiateCheckout', {
-              currency: 'USD',
-              value: 0.00,
-              content_ids: ['CCD_CC_AC_Page_CC_Facebook_PageLoad'],
-              content_type: 'product',
-              Product: 'CC',
-              Subproduct: 'AC',
-              PageID: 'OSMA_APPL_CONSUMER_CREDITCARD_PAGE',
-              CustomerType: '',
-              CustomerStatus: 'n',
-              ApplicationStatus: '',
-              eid: '2507241313-0a868478bb07'
-            });
-            console.log("InitiateCheckout event fired!");
-          }
-
-          // Purchase event (Thank You Page)
-          function fireThankYouPurchase() {
-            fbq('track', 'Purchase', {
-              content_ids: ['ThankYouInitiatePageLoadAAO'],
-              content_type: 'product',
-              eid: 'lololol12345'
-            });
-            console.log("Thank You Purchase event fired!");
-          }
-        </script>
+        <button id="addToCartButton">Simulate Add to Cart Event</button>
+        <button id="purchaseButton">Simulate Purchase Event</button>
+        <button id="initiateCheckoutButton">Simulate Initiate Checkout Event</button>
+        <button id="thankYouPurchaseButton">Simulate Thank You Page Purchase Event</button>
     </main>
 </body>
 </html>
